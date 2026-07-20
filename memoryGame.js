@@ -4,6 +4,10 @@ let STARTING_Y_LOCATION = 150;
 
 //Menu UI items:
 var startButton;
+var startButtonX;
+var startButtonY;
+var startButtonWidth = 180;
+var startButtonHeight = 60;
 var gameText;
 var startText;
 
@@ -45,14 +49,17 @@ function start(){
 
 function menuUI(){ //Function used to draw the background and the game screen up.
     drawBackground();
-    startButton = drawRect(getWidth()/3, getHeight()/2, 125, 50, "GRAY"); //Creates the start button.
-    gameText = drawText(90, 50, "Memory Game", "25pt Arial", "BLACK"); //Creates the game name.
-    startText = drawText(140, 275, "START", "25pt Arial", "BLACK"); //Creates the start text.
+    startButtonX = (getWidth() - startButtonWidth) / 2;
+    startButtonY = (getHeight() - startButtonHeight) / 2;
+    startButton = drawRect(startButtonX, startButtonY, startButtonWidth, startButtonHeight, "GRAY"); //Creates the start button.
+    gameText = drawText((getWidth() - 260) / 2, 90, "Memory Game", "28pt Arial", "BLACK"); //Creates the game name.
+    startText = drawText(startButtonX + 35, startButtonY + 40, "START", "25pt Arial", "BLACK"); //Creates the start text.
     mouseClickMethod(removeMainMenu);
 }
 
 function removeMainMenu(e){ //Function used to remove the main menu.
-    if((e.getX() >= 135 && e.getX() <= 260) && (e.getY() >= 241 && e.getY <= 290)){
+    if((e.getX() >= startButtonX && e.getX() <= startButtonX + startButtonWidth) &&
+       (e.getY() >= startButtonY && e.getY() <= startButtonY + startButtonHeight)){
         mouseClickMethod(null); //Makes it so it doesn't take any more mouse inputs.
         remove(startButton);
         remove(gameText);

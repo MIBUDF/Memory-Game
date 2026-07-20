@@ -35,13 +35,14 @@ gameArea.addEventListener("click", (event) => {
         return;
     }
 
-    const rect = gameArea.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const point = gameArea.createSVGPoint();
+    point.x = event.clientX;
+    point.y = event.clientY;
+    const svgPoint = point.matrixTransform(gameArea.getScreenCTM().inverse());
 
     mouseClickCallback({
-        getX: () => x,
-        getY: () => y,
+        getX: () => svgPoint.x,
+        getY: () => svgPoint.y,
     });
 });
 
