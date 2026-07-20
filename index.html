@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #eef;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #gameContainer {
+            width: 450px;
+            height: 460px;
+            border: 2px solid #333;
+            background: #d0f0f7;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            user-select: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <svg id="gameArea" viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+
+    <script src="codehsShim.js"></script>
+    <script src="memoryGame.js"></script>
+    <script>window.onload = game;</script>
+</body>
+</html>
